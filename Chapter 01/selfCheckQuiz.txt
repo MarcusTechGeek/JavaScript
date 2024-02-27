@@ -1,0 +1,4 @@
+1) <script src=""></script>
+2)You can import an js file into an html file to run it but cannot run a js file on it's own.
+3)/*this is a multable line comment*/
+4)insert a breakpoint into the debugger after the code you do not want to run or comment the code out
