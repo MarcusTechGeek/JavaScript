@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- JavaScript code to demonstrate document and window ready events -->
+  <script>
+    // Event listener for DOMContentLoaded event
+    document.addEventListener("DOMContentLoaded", (e) => {
+      // Call the message function with "Document ready" and the event object
+      message("Document ready", e);
+    });
+
+    // Event listener for window.onload event
+    window.onload = (e) => {
+      // Call the message function with "Window ready" and the event object
+      message("Window ready", e);
+    }
+
+    // Function to log messages and event objects to the console
+    function message(val, event) {
+      console.log(event);
+      console.log(val);
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <!-- Four div elements with different colors -->
+  <div>red</div>
+  <div>blue</div>
+  <div>green</div>
+  <div>yellow</div>
+
+  <!-- JavaScript code to change the background color on div click -->
+  <script>
+    // Select all div elements
+    const divs = document.querySelectorAll("div");
+
+    // Add a click event listener to each div
+    divs.forEach((el) => {
+      el.addEventListener("click", () => {
+        // Change the background color of the body to the text content of the clicked div
+        document.body.style.backgroundColor = el.textContent;
+      });
+    });
+  </script>
+</body>
+
+</html>

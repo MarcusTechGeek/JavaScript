@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Container div with elements having the class "myEle" -->
+  <div class="container">
+    <div class="myEle">One</div>
+    <div class="myEle">Two</div>
+    <div class="myEle">Three</div>
+    <div class="myEle">Four</div>
+    <div class="myEle">Five</div>
+  </div>
+
+  <!-- JavaScript code to select and output elements with the class "myEle" -->
+  <script>
+    // Select all elements with the class "myEle" using querySelectorAll
+    const eles = document.querySelectorAll(".myEle");
+
+    // Output the NodeList containing all elements with the class "myEle" into the console
+    console.log(eles);
+
+    // Loop through each element in the NodeList and log each element to the console
+    eles.forEach((el) => {
+      console.log(el);
+    });
+  </script>
+
+</body>
+
+</html>

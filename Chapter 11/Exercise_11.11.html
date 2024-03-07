@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <style>
+    /* CSS styling for the block */
+    div {
+      background-color: purple;
+      width: 100px;
+      height: 100px;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Block element with ID 'block' -->
+  <div id="block"></div>
+
+  <!-- JavaScript code for moving the block -->
+  <script>
+    // Selecting the block element by ID
+    const main = document.querySelector("#block");
+
+    // Object to store movement properties
+    let mover = { speed: 10, dir: 1, pos: 0 };
+
+    // Adding a click event listener to move the block
+    main.addEventListener("click", moveBlock);
+
+    // Function to move the block
+    function moveBlock() {
+      let x = 30;
+
+      // Setting an interval for smooth movement
+      const intervalId = setInterval(function () {
+        if (x < 1) {
+          clearInterval(intervalId); // Clearing the interval when x reaches 1
+        } else {
+          // Handling block movement within the specified range
+          if (mover.pos > 800 || mover.pos < 0) {
+            mover.dir *= -1; // Reversing the direction if the block reaches the boundary
+          }
+
+          x--;
+          mover.pos += x * mover.dir; // Calculating the new position
+          main.style.left = mover.pos + "px"; // Updating the block's left position
+          console.log(mover.pos);
+        }
+      }, 2); // Setting the interval delay to 2 milliseconds
+    }
+  </script>
+</body>
+
+</html>

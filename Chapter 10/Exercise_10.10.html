@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>Complete JavaScript Course</title>
+  <style>
+    /* Styles can be added here if needed */
+  </style>
+</head>
+
+<body>
+  <!-- Output divs to display messages, input elements, and the shopping list -->
+  <div id="message">Complete JavaScript Course</div>
+  <div>
+    <input type="text" id="addItem">
+    <input type="button" id="addNew" value="Add to List">
+  </div>
+  <div id="output">
+    <h1>Shopping List</h1>
+    <ol id="sList"></ol>
+  </div>
+
+  <!-- JavaScript code to handle adding items to the shopping list -->
+  <script>
+    // Add event listener to the "Add to List" button
+    document.getElementById("addNew").onclick = function () {
+      addOne();
+    }
+
+    // Function to add a new item to the shopping list
+    function addOne() {
+      // Get the value from the input field
+      var a = document.getElementById("addItem").value;
+      
+      // Create a new list item, append the input value, and add it to the shopping list
+      var li = document.createElement("li");
+      li.appendChild(document.createTextNode(a));
+      document.getElementById("sList").appendChild(li);
+    }
+  </script>
+
+</body>
+
+</html>

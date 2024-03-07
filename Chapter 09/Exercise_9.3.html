@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Head content goes here if needed -->
+  </head>
+  <body>
+    <!-- The output div to display content -->
+    <div class="output"></div>
+
+    <!-- JavaScript code to manipulate the output div -->
+    <script>
+      // Selecting the output div using its class
+      const output = document.querySelector('.output');
+
+      // Setting the text content of the output div
+      output.textContent = "Hello World";
+
+      // Adding a CSS class to the output div
+      output.classList.add("red");
+
+      // Setting an ID attribute for the output div
+      output.id = "tester";
+
+      // Changing the background color of the output div using inline styles
+      output.style.backgroundColor = "red";
+
+      // Logging the URL of the document to the console
+      console.log(document.URL);
+
+      // Changing the text content of the output div to the document URL
+      output.textContent = document.URL;
+    </script>
+  </body>
+</html>

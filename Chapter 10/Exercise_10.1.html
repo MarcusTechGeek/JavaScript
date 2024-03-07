@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>Sample Webpage</title>
+</head>
+
+<body>
+  <!-- The main container div with class "main" -->
+  <div class="main">
+    <!-- Nested div containing an unordered list -->
+    <div>
+      <ul>
+        <!-- List items inside the unordered list -->
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    </div>
+
+    <!-- Additional div elements with different colors -->
+    <div>blue</div>
+    <div>green</div>
+    <div>yellow</div>
+    <div>Purple</div>
+  </div>
+
+  <!-- JavaScript code to traverse and manipulate the DOM -->
+  <script>
+    // Step 2: Accessing and viewing child elements of the body
+    const bodyChildren = document.body.children;
+    console.log(bodyChildren);
+
+    // Step 3: Navigating to and logging the children of the first child (nested div)
+    const nestedDivChildren = document.body.children[0].children;
+    console.log(nestedDivChildren);
+  </script>
+</body>
+
+</html>

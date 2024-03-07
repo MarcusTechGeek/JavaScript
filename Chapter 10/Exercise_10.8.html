@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>Complete JavaScript Course</title>
+</head>
+
+<body>
+  <!-- Output divs to display messages and the generated table -->
+  <div id="message"></div>
+  <div id="output"></div>
+
+  <!-- JavaScript code to generate a table of friends and handle click events -->
+  <script>
+    // Selecting the message div and defining an array of friends
+    const message = document.querySelector("#message");
+    const myArray = ["Laurence", "Mike", "John", "Larry", "Kim", "Joanne", "Lisa", "Janet", "Jane"];
+
+    // Function to build and display the friends table
+    function build() {
+      let html = "<h1>My Friends Table</h1><table>";
+
+      // Looping through the array to create table rows with data attributes
+      myArray.forEach((item, index) => {
+        html +=
+          `<tr class="box" data-row="${index + 1}" data-name="${item}" onclick="getData(this)"><td>${item}</td>`;
+        html += `<td>${index + 1}</td></tr>`;
+      });
+
+      html += "</table>";
+
+      // Setting the innerHTML of the output div to the generated HTML
+      document.getElementById("output").innerHTML = html;
+    }
+
+    // Function to display data when a table row is clicked
+    function getData(el) {
+      let temp = el.getAttribute("data-row");
+      let tempName = el.getAttribute("data-name");
+      message.innerHTML = `${tempName} is in row #${temp}`;
+    }
+
+    // Calling the build function to generate the table on page load
+    build();
+  </script>
+
+</body>
+
+</html>

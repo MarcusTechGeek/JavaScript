@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Two buttons with onclick events calling the message function -->
+  <div>
+    <button onclick="message(this)">Button 1</button>
+    <button onclick="message(this)">Button 2</button>
+  </div>
+
+  <!-- JavaScript code defining the message function -->
+  <script>
+    // Function to log the text content of the clicked button using console.dir
+    function message(el) {
+      console.dir(el.textContent);
+    }
+  </script>
+
+</body>
+
+</html>

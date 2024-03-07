@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Output div with initial styling -->
+  <div class="output"></div>
+
+  <!-- JavaScript code to manipulate the output div and handle mouse events -->
+  <script>
+    // Selecting the output div
+    const output = document.querySelector(".output");
+
+    // Setting initial text content and styling of the output div
+    output.textContent = "hello world";
+    output.style.height = "200px";
+    output.style.width = "400px";
+    output.style.backgroundColor = "red";
+
+    // Adding mouse event listeners to the output div
+    output.addEventListener("mousedown", function (e) {
+      // Call the message function with color "green" and the event object
+      message("green", e);
+    });
+    output.addEventListener("mouseover", function (e) {
+      // Call the message function with color "red" and the event object
+      message("red", e);
+    });
+    output.addEventListener("mouseout", function (e) {
+      // Call the message function with color "yellow" and the event object
+      message("yellow", e);
+    });
+    output.addEventListener("mouseup", function (e) {
+      // Call the message function with color "blue" and the event object
+      message("blue", e);
+    });
+
+    // Function to log the event type and change the background color of the output div
+    function message(elColor, event) {
+      console.log(event.type);
+      output.style.backgroundColor = elColor;
+    }
+  </script>
+
+</body>
+
+</html>

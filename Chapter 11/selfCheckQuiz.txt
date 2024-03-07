@@ -1,0 +1,15 @@
+1. Where can you find window.innerHeight and window.innerWidth?
+
+1)
+Found in the global window object in web browsers.
+window.innerHeight: Represents the viewport's interior height in pixels.
+window.innerWidth: Represents the viewport's interior width in pixels.
+Useful for responsive design and layout calculations based on the user's viewport dimensions.
+
+2. What does preventDefault() do?
+
+2)
+Event method in JavaScript.
+Used to stop the browser from executing the default action associated with an event.
+Commonly employed in event handling to customize or control event behavior.
+For example, prevents form submission or link navigation default actions, allowing manual handling with JavaScript.

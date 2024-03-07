@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Output div, input field, and buttons with event listeners -->
+  <div class="output"></div>
+  <input type="text" name="message" placeholder="Your Message">
+  <button class="btn1">Button 1</button>
+  <button class="btn2">Button 2</button>
+  <div>
+    <button class="btn3">Log</button>
+  </div>
+
+  <!-- JavaScript code to handle input and button events -->
+  <script>
+    // Selecting elements
+    const myInput = document.querySelector("input[name='message']");
+    const output = document.querySelector(".output");
+    const btn1 = document.querySelector(".btn1");
+    const btn2 = document.querySelector(".btn2");
+    const btn3 = document.querySelector(".btn3");
+    const log = [];
+
+    // Adding click event listeners to buttons and logging events
+    btn1.addEventListener("click", tracker);
+    btn2.addEventListener("click", tracker);
+    btn3.addEventListener("click", (e) => {
+      console.log(log);
+    });
+
+    // Function to handle button click events
+    function tracker(e) {
+      // Update the text content of the output div with the input value
+      output.textContent = myInput.value;
+
+      // Accessing properties of the clicked button and creating a log entry
+      const ev = e.target;
+      console.dir(ev);
+      const temp = {
+        message: myInput.value,
+        type: ev.type,
+        class: ev.className,
+        tag: ev.tagName
+      };
+      // Adding the log entry to the log array
+      log.push(temp);
+
+      // Clearing the input field
+      myInput.value = "";
+    }
+  </script>
+
+</body>
+
+</html>

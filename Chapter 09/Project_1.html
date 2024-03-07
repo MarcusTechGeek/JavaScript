@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Head content goes here if needed -->
+  </head>
+  <body>
+    <!-- The output div with nested elements -->
+    <div class="output">
+      <h1>Hello</h1>
+      <div>Test</div>
+      <ul>
+        <li id="one">One</li>
+        <li class="red">Two</li>
+      </ul>
+      <div>Test</div>
+    </div>
+
+    <!-- JavaScript code to manipulate the DOM elements -->
+    <script>
+      // Selecting the output div using its class
+      const output = document.querySelector(".output");
+
+      // Selecting the unordered list within the output div
+      const mainList = output.querySelector("ul");
+
+      // Adding an ID attribute to the unordered list
+      mainList.id = "mainList";
+
+      // Logging the mainList to the console
+      console.log(mainList);
+
+      // Selecting all div elements in the document
+      const eles = document.querySelectorAll("div");
+
+      // Looping through each div element
+      for (let x = 0; x < eles.length; x++) {
+        // Logging the tag name of each div to the console
+        console.log(eles[x].tagName);
+
+        // Adding an ID attribute to each div based on its index
+        eles[x].id = "id" + (x + 1);
+
+        // Applying different colors to alternate div elements
+        if (x % 2) {
+          eles[x].style.color = "red";
+        } else {
+          eles[x].style.color = "blue";
+        }
+      }
+    </script>
+  </body>
+</html>

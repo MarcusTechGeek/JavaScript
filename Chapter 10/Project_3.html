@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Head content goes here if needed -->
+    <title>Hangman Game</title>
+    <style>
+        /* Styles for the game area */
+        .gameArea {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        /* Styles for boxes and letters */
+        .box,
+        .boxD {
+            display: inline-block;
+            padding: 5px;
+        }
+
+        /* Styles for the letter boxes */
+        .boxE {
+            display: inline-block;
+            width: 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Game area with score, puzzle, letters, and start game button -->
+    <div class="gameArea">
+        <div class="score"> </div>
+        <div class="puzzle"></div>
+        <div class="letters"></div>
+        <button>Start Game</button>
+    </div>
+
+    <!-- JavaScript code for Hangman game -->
+    <script>
+        // Game object to store current word, solution, puzzle, and total letters
+        const game = { cur: "", solution: "", puzz: [], total: 0 };
+        const myWords = ["learn Javascript", "learn html", "learn css"];
+        const score = document.querySelector(".score");
+        const puzzle = document.querySelector(".puzzle");
+        const letters = document.querySelector(".letters");
+        const btn = document.querySelector("button");
+
+        // Event listener for the "Start Game" button
+        btn.addEventListener("click", startGame);
+
+        // Function to start the game
+        function startGame() {
+            if (myWords.length > 0) {
+                btn.style.display = "none";
+                game.puzz = [];
+                game.total = 0;
+                game.cur = myWords.shift();
+                game.solution = game.cur.split("");
+                builder(); // Call the builder function to set up the puzzle
+            } else {
+                score.textContent = "No More Words.";
+            }
+        }
+
+        // Function to create HTML elements
+        function createElements(elType, parentEle, output, cla) {
+            const temp = document.createElement(elType);
+            temp.classList.add("boxE");
+            parentEle.append(temp);
+            temp.textContent = output;
+            return temp;
+        }
+
+        // Function to update the score display
+        function updateScore() {
+            score.textContent = `Total Letters Left : ${game.total}`;
+            if (game.total <= 0) {
+                console.log("game over");
+                score.textContent = "Game Over";
+                btn.style.display = "block";
+            }
+        }
+
+        // Function to build the puzzle and letters
+        function builder() {
+            letters.innerHTML = "";
+            puzzle.innerHTML = "";
+            game.solution.forEach((lett) => {
+                let div = createElements("div", puzzle, "-", "boxE");
+                if (lett == " ") {
+                    div.style.borderColor = "white";
+                    div.textContent = " ";
+                } else {
+                    game.total++;
+                }
+                game.puzz.push(div);
+                updateScore();
+            });
+
+            // Loop to create letter boxes
+            for (let i = 0; i < 26; i++) {
+                let temp = String.fromCharCode(65 + i);
+                let div = createElements("div", letters, temp, "box");
+
+                // Function to handle letter click
+                let checker = function (e) {
+                    div.style.backgroundColor = "#ddd";
+                    div.classList.remove("box");
+                    div.classList.add("boxD");
+                    div.removeEventListener("click", checker);
+                    checkLetter(temp); // Call the checkLetter function for the clicked letter
+                }
+
+                // Event listener for letter click
+                div.addEventListener("click", checker);
+            }
+        }
+
+        // Function to check the selected letter against the solution
+        function checkLetter(letter) {
+            console.log(letter);
+            game.solution.forEach((ele, index) => {
+                if (ele.toUpperCase() == letter) {
+                    game.puzz[index].textContent = letter;
+                    game.total--;
+                    updateScore();
+                };
+            });
+        }
+    </script>
+
+</body>
+
+</html>

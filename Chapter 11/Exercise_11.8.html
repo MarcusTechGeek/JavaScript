@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Output div and two input fields for numbers -->
+  <div class="output"></div>
+  <input type="text" name="myNum1">
+  <input type="text" name="myNum2">
+
+  <!-- JavaScript code to handle keydown, keyup, and paste events on the input fields -->
+  <script>
+    // Selecting elements
+    const eles = document.querySelectorAll("input");
+    const output = document.querySelector(".output");
+
+    // Adding event listeners to each input field
+    eles.forEach(el => {
+      el.addEventListener("keydown", (e) => {
+        // Checking if the pressed key is a number and updating the output div
+        if (!isNaN(e.key)) {
+          output.textContent += e.key;
+        }
+      });
+      el.addEventListener("keyup", (e) => {
+        // Logging the key released
+        console.log(e.key);
+      });
+      el.addEventListener("paste", (e) => {
+        // Logging when a paste event occurs
+        console.log('pasted');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

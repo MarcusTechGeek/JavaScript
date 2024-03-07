@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+  <style>
+    /* Styles for the classes */
+    .active {
+      display: block !important;
+    }
+
+    .myText {
+      display: none;
+    }
+
+    .title {
+      font-size: 1.5em;
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Container div with titles and corresponding text content -->
+  <div class="container">
+    <div class="title">Title #1</div>
+    <div class="myText">Just some text #1</div>
+    <div class="title">Title #2</div>
+    <div class="myText">Just some text #2</div>
+    <div class="title">Title #3</div>
+    <div class="myText">Just some text #3</div>
+  </div>
+
+  <!-- JavaScript code to toggle the display of text content on title click -->
+  <script>
+    // Selecting all elements with class "title" and "myText"
+    const menus = document.querySelectorAll(".title");
+    const openText = document.querySelectorAll(".myText");
+
+    // Adding click event listeners to each "title" element
+    menus.forEach((el) => {
+      el.addEventListener("click", (e) => {
+        console.log(el.nextElementSibling);
+        remover(); // Call the remover function to remove the "active" class from all "myText" elements
+        el.nextElementSibling.classList.toggle("active"); // Toggle the "active" class on the clicked "title" element's next sibling ("myText")
+      })
+    })
+
+    // Function to remove the "active" class from all "myText" elements
+    function remover() {
+      openText.forEach((ele) => {
+        ele.classList.remove("active");
+      })
+    }
+  </script>
+
+</body>
+
+</html>

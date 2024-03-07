@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Form for user input -->
+  <form action="index2.html" method="get">
+    First: <input type="text" name="first">
+    <br>Last: <input type="text" name="last">
+    <br>Age: <input type="number" name="age">
+    <br><input type="submit" value="submit">
+  </form>
+
+  <!-- JavaScript code to handle form submission and validation -->
+  <script>
+    // Selecting the form element
+    const form = document.querySelector("form");
+
+    // Adding a submit event listener to the form
+    form.addEventListener("submit", (e) => {
+      // Variable to track errors
+      let error = false;
+
+      // Checking if the first name is provided
+      if (checker(form.first.value)) {
+        console.log("First Name needed");
+        error = true;
+      }
+
+      // Checking if the last name is provided
+      if (checker(form.last.value)) {
+        console.log("Last Name needed");
+        error = true;
+      }
+
+      // Checking if the age is 19 or over
+      if (form.age.value < 19) {
+        console.log("You must be 19 or over");
+        error = true;
+      }
+
+      // Preventing form submission if there are errors
+      if (error) {
+        e.preventDefault();
+        console.log("Please review the form");
+      }
+    });
+
+    // Function to check the length of a value
+    function checker(val) {
+      console.log(val.length);
+      return val.length < 6;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Output div and input fields for first and last names -->
+  <div class="output1"></div>
+  <input type="text" placeholder="First Name" name="first"><br>
+  <input type="text" placeholder="Last Name" name="last"><br>
+
+  <!-- JavaScript code to handle input events on the text fields -->
+  <script>
+    // Selecting elements
+    const output = document.querySelector(".output1");
+    const in1 = document.querySelector("input[name='first']");
+    const in2 = document.querySelector("input[name='last']");
+
+    // Adding change, blur, and focus event listeners to the first name input field
+    in1.addEventListener("change", (e) => {
+      console.log("change");
+      updater(in1.value);
+    });
+    in1.addEventListener("blur", (e) => {
+      console.log("blur");
+    });
+    in1.addEventListener("focus", (e) => {
+      console.log("focus");
+    });
+
+    // Adding change, blur, and focus event listeners to the last name input field
+    in2.addEventListener("change", (e) => {
+      console.log("change");
+      updater(in2.value);
+    });
+    in2.addEventListener("blur", (e) => {
+      console.log("blur");
+    });
+    in2.addEventListener("focus", (e) => {
+      console.log("focus");
+    });
+
+    // Function to update the content of the output div
+    function updater(str) {
+      output.textContent = str;
+    }
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>JS Tester</title>
+</head>
+
+<body>
+  <!-- Three buttons -->
+  <div>
+    <button>Button 1</button>
+    <button>Button 2</button>
+    <button>Button 3</button>
+  </div>
+
+  <!-- JavaScript code to add event listeners to buttons -->
+  <script>
+    // Selecting all buttons and adding event listeners to each
+    const btns = document.querySelectorAll("button");
+    btns.forEach((btn) => {
+      // Define the output function to log the text content of the clicked button
+      function output() {
+        console.log(this.textContent);
+      }
+      // Add event listener to each button to trigger the output function on click
+      btn.addEventListener("click", output);
+    });
+  </script>
+
+</body>
+
+</html>

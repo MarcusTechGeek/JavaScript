@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Complete JavaScript Course</title>
+    <style>
+        /* CSS styles for the box and active state */
+        .holder {
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+            padding: 10px;
+        }
+
+        .active {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container with the active state and mouse coordinates display -->
+    <div class="holder">
+        <div id="output"></div>
+    </div>
+
+    <!-- JavaScript code for mouse events and coordinates display -->
+    <script>
+        // Selecting the holder element
+        const ele = document.querySelector(".holder");
+
+        // Adding event listeners for mouseover, mouseout, and mousemove
+        ele.addEventListener("mouseover", (e) => {
+            e.target.classList.add("active");
+        });
+
+        ele.addEventListener("mouseout", (e) => {
+            e.target.classList.remove("active");
+        });
+
+        ele.addEventListener("mousemove", coordin);
+
+        // Function to display mouse coordinates
+        function coordin(event) {
+            let html = "X:" + event.clientX + " | Y:" + event.clientY;
+            document.getElementById("output").innerHTML = html;
+        }
+    </script>
+
+</body>
+
+</html>

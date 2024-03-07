@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>Marcus Gouws</title>
+</head>
+
+<body>
+  <!-- JavaScript code to toggle between dark mode and light mode -->
+  <script>
+    // Variable to track the current mode (dark or light)
+    let darkMode = false;
+
+    // Event listener to toggle mode on any click on the window
+    window.onclick = () => {
+      // Output the current mode to the console
+      console.log(darkMode);
+
+      // Check the current mode and toggle styles accordingly
+      if (!darkMode) {
+        document.body.style.backgroundColor = "black";
+        document.body.style.color = "white";
+        darkMode = true;
+      } else {
+        document.body.style.backgroundColor = "white";
+        document.body.style.color = "black";
+        darkMode = false;
+      }
+    };
+  </script>
+
+</body>
+
+</html>

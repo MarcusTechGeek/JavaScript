@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Head content goes here if needed -->
+  <title>Complete JavaScript Course</title>
+  <style>
+    /* Styles can be added here if needed */
+    .box {
+      cursor: pointer;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Output divs to display messages, input elements, and the table -->
+  <div id="message">Complete JavaScript Course</div>
+  <div>
+    <input type="text" id="addFriend">
+    <input type="button" id="addNew" value="Add Friend">
+  </div>
+  <table id="output"></table>
+
+  <!-- JavaScript code to handle adding friends to the table -->
+  <script>
+    // Execute the build function when the window loads
+    window.onload = build;
+
+    // Array of friends
+    const myArray = ["Laurence", "Mike", "John", "Larry"];
+
+    // Selecting HTML elements by ID
+    const message = document.getElementById("message");
+    const addNew = document.getElementById("addNew");
+    const newInput = document.getElementById("addFriend");
+    const output = document.getElementById("output");
+
+    // Event listener for the "Add Friend" button
+    addNew.onclick = function () {
+      const newFriend = newInput.value;
+      adder(newFriend, myArray.length, 0); // Call the adder function to add a new friend to the table
+      myArray.push(newFriend); // Add the new friend to the array
+    }
+
+    // Function to build the initial table with existing friends
+    function build() {
+      myArray.forEach((item, index) => {
+        adder(item, index, 0); // Call the adder function for each existing friend
+      });
+    }
+
+    // Function to add a friend to the table
+    function adder(name, index, counter) {
+      // Create table elements and set their content
+      const tr = document.createElement("tr");
+      const td1 = document.createElement("td");
+      td1.classList.add("box");
+      td1.textContent = index + 1;
+      const td2 = document.createElement("td");
+      td2.textContent = name;
+      const td3 = document.createElement("td");
+      td3.textContent = counter;
+
+      // Append elements to the table row
+      tr.append(td1);
+      tr.append(td2);
+      tr.append(td3);
+
+      // Add click event to the table row to update the counter
+      tr.onclick = function () {
+        console.log(tr.lastChild);
+        let val = Number(tr.lastChild.textContent);
+        val++;
+        tr.lastChild.textContent = val;
+      }
+
+      // Append the table row to the table
+      output.appendChild(tr);
+    }
+  </script>
+
+</body>
+
+</html>
