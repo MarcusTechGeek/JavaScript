@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+    <title>JavaScript Course</title>
+</head>
+<body>
+    <!-- Output div to display the validation result -->
+    <div class="output"></div>
+    
+    <!-- Input field for entering the email address -->
+    <input type="text" placeholder="Enter Email">
+    
+    <!-- Button to trigger the email validation -->
+    <button>Check</button>
+
+    <script>
+        // Getting references to HTML elements by their classes and tags
+        const output = document.querySelector(".output");
+        const emailVal = document.querySelector("input");
+        const btn = document.querySelector("button");
+
+        // Regular expression to validate email addresses
+        const emailExp = /([A-Za-z0-9._-]+@[A-Za-z0-9._-]+\.[A-Za-z0-9]+)\w+/;
+
+        // Adding a click event listener to the button, calling the validation function
+        btn.addEventListener("click", (e) => {
+            // Get the entered email address
+            const val = emailVal.value;
+
+            // Test the email address against the regular expression
+            const result = emailExp.test(val);
+
+            // Variable to store the validation response
+            let response = "";
+
+            // Check the validation result and set the response and text color accordingly
+            if (!result) {
+                response = "Invalid Email";
+                output.style.color = "red";
+            } else {
+                response = "Valid Email";
+                output.style.color = "green";
+            }
+
+            // Clear the input field
+            emailVal.value = "";
+
+            // Update the output div with the validation response
+            output.textContent = response;
+        });
+    </script>
+</body>
+</html>

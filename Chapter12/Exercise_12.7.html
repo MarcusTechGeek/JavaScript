@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+    <title>JavaScript</title>
+    <style>
+        .ready {
+            background-color: #ddd;
+            color: red;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <input placeholder="New Item" value="test item" maxlength="30">
+        <button>Add</button>
+    </div>
+    <ul class="output">
+    </ul>
+    <script>
+        // Get references to HTML elements
+        const userTask = document.querySelector(".main input");
+        const addBtn = document.querySelector(".main button");
+        const output = document.querySelector(".output");
+
+        // Retrieve tasks from local storage or initialize an empty array
+        const tasks = JSON.parse(localStorage.getItem("tasklist")) || [];
+
+        // Event listener for the "Add" button
+        addBtn.addEventListener("click", createListItem);
+
+        // If there are tasks in local storage, render them on the page
+        if (tasks.length > 0) {
+            tasks.forEach((task) => {
+                genItem(task.val, task.checked);
+            });
+        }
+
+        // Function to save tasks to local storage
+        function saveTasks() {
+            localStorage.setItem("tasklist", JSON.stringify(tasks));
+        }
+
+        // Function to build the tasks array based on the current list
+        function buildTasks() {
+            tasks.length = 0;
+            const curList = output.querySelectorAll("li");
+            curList.forEach((el) => {
+                const tempTask = {
+                    val: el.textContent,
+                    checked: false
+                };
+                if (el.classList.contains("ready")) {
+                    tempTask.checked = true;
+                }
+                tasks.push(tempTask);
+            });
+            saveTasks();
+        }
+
+        // Function to generate a new list item
+        function genItem(val, complete) {
+            const li = document.createElement("li");
+            const temp = document.createTextNode(val);
+            li.appendChild(temp);
+            output.append(li);
+            userTask.value = "";
+
+            // If the task is marked as complete, apply the corresponding class
+            if (complete) {
+                li.classList.add("ready");
+            }
+
+            // Event listener for toggling the "ready" class on click
+            li.addEventListener("click", (e) => {
+                li.classList.toggle("ready");
+                buildTasks();
+            });
+
+            return val;
+        }
+
+        // Function to create a new list item
+        function createListItem() {
+            const val = userTask.value;
+
+            // If the input has a value, create a new list item and save the task
+            if (val.length > 0) {
+                const myObj = {
+                    val: genItem(val, false),
+                    checked: false
+                };
+                tasks.push(myObj);
+                saveTasks();
+            }
+        }
+    </script>
+</body>
+</html>

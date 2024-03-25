@@ -1,0 +1,60 @@
+1. 
+What will the following regex expression return from the following words?
+Expression / ([a-e])\w+/g
+"Hope you enjoy JavaScript"
+
+
+1)    The range matched is from a to e and is case sensitive. It will return the rest
+    of the word: enjoy avaScript.
+
+
+2. Are cookies part of the document object?
+   
+   
+2) Yes.
+
+
+3. What will the following code do to a JavaScript cookie?
+const mydate = new Date();
+mydate.setTime(mydate.getTime() - 1);
+document.cookie = "username=; expires=" + mydate.toGMTString();
+   
+   
+3) It will clear cookies from the site.
+
+
+4. What is the output in the console from the following code?
+const a = "hello world";
+(function () {
+const a = "JavaScript";
+})();
+console.log(a);
+
+
+4) hello world
+
+
+5.  What is the output in the console from the following code?
+<script>
+"use strict";
+myFun();
+console.log(a);
+function myFun() {
+a = "Hello World";
+}
+</script>
+
+5)  a is not defined.
+
+
+6.  What is the output of the following code?
+console.log("a");
+setTimeout(() => {
+console.log("b");
+}, 0);
+console.log("c");
+
+6)
+    a
+    c
+    b

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+    <title>Complete JavaScript Course</title>
+</head>
+<body>
+    <script>
+        // Log the existing cookies
+        console.log(document.cookie);
+
+        // Log the value of a specific cookie ("test1")
+        console.log(rCookie("test1"));
+
+        // Log the value of a non-existing cookie ("test")
+        console.log(rCookie("test"));
+
+        // Create a new cookie ("test1") with a value ("new Cookie") that expires in 30 days
+        cCookie("test1", "new Cookie", 30);
+
+        // Delete a cookie ("test2")
+        dCookie("test2");
+
+        // Function to create a new cookie
+        function cCookie(cName, value, days) {
+            if (days) {
+                const d = new Date();
+                d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+                let e = "; expires=" + d.toUTCString();
+                document.cookie = cName + "=" + value + e + "; path=/";
+            }
+        }
+
+        // Function to read the value of a cookie
+        function rCookie(cName) {
+            let cookieValue = false;
+            let arr = document.cookie.split("; ");
+            arr.forEach(str => {
+                const cookie = str.split("=");
+                if (cookie[0] == cName) {
+                    cookieValue = cookie[1];
+                }
+            });
+            return cookieValue;
+        }
+
+        // Function to delete a cookie
+        function dCookie(cName) {
+            cCookie(cName, "", -1);
+        }
+    </script>
+</body>
+</html>
