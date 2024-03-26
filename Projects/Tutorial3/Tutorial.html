@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Tutorial.css">
+    <title>Document</title>
+</head>
+<body>
+    <section class="content">
+        <h1 class="content__heading">Send Me a Message</h1>
+        <p class="content__lede">Use this handy contact form to get in touch with me.</p>
+        <form class="content__form contact-form">
+          <!-- Test section -->
+          <div class="testing">
+            <p>Does this do anything?</p>
+          </div>
+          <!-- Radio button group for salutation -->
+          <div class="contact-form__input-group">
+            <input class="contact-form__input contact-form__input--radio" id="salutation-mr" name="salutation" type="radio" value="Mr."/>
+            <label class="contact-form__label contact-form__label--radio" for="salutation-mr">Mr.</label>
+            <input class="contact-form__input contact-form__input--radio" id="salutation-mrs" name="salutation" type="radio" value="Mrs."/>
+            <label class="contact-form__label contact-form__label--radio" for="salutation-mrs">Mrs.</label>
+            <input class="contact-form__input contact-form__input--radio" id="salutation-ms" name="salutation" type="radio" value="Ms."/>
+            <label class="contact-form__label contact-form__label--radio" for="salutation-ms">Ms.</label>
+          </div>
+          <!-- Input field for full name -->
+          <div class="contact-form__input-group">
+            <label class="contact-form__label" for="name">Full Name</label>
+            <input class="contact-form__input contact-form__input--text" id="name" name="name" type="text"/>
+          </div>
+          <!-- Input field for email -->
+          <div class="contact-form__input-group">
+            <label class="contact-form__label" for="email">Email Address</label>
+            <input class="contact-form__input contact-form__input--email" id="email" name="email" type="email"/>
+          </div>
+          <!-- Select dropdown for subject -->
+          <div class="contact-form__input-group">
+            <label class="contact-form__label" for="subject">How can I help you?</label>
+            <select class="contact-form__input contact-form__input--select" id="subject" name="subject">
+              <option>I have a problem.</option>
+              <option>I have a general question.</option>
+            </select>
+          </div>
+          <!-- Textarea for message -->
+          <div class="contact-form__input-group">
+            <label class="contact-form__label" for="message">Enter a Message</label>
+            <textarea class="contact-form__input contact-form__input--textarea" id="message" name="message" rows="6" cols="65"></textarea>
+          </div>
+          <!-- Checkbox group for snacks -->
+          <div class="contact-form__input-group">
+            <p class="contact-form__label--checkbox-group">Please send me:</p>
+            <input class="contact-form__input contact-form__input--checkbox" id="snacks-pizza" name="snacks" type="checkbox" value="pizza"/>
+            <label class="contact-form__label contact-form__label--checkbox" for="snacks-pizza">Pizza</label>
+            <input class="contact-form__input contact-form__input--checkbox" id="snacks-cake" name="snacks" type="checkbox" value="cake"/>
+            <label class="contact-form__label contact-form__label--checkbox" for="snacks-cake">Cake</label>
+          </div>
+          <!-- Hidden field for secret -->
+          <input name="secret" type="hidden" value="1b3a9374-1a8e-434e-90ab-21aa7b9b80e7"/>
+          <!-- Button for form submission -->
+          <button class="contact-form__button" type="submit">Send It!</button>
+        </form>
+      </section>
+      <!-- Display section for form data -->
+      <div class="results">
+        <h2 class="results__heading">Form Data</h2>
+        <pre class="results__display-wrapper"><code class="results__display"></code></pre>
+      </div>
+      
+    <script>
+        // Function to check if an element is valid (has name and value)
+        const isValidElement = element => {
+            return element.name && element.value;
+        };
+        
+        // Function to check if an element's value is valid (e.g., not unchecked checkbox)
+        const isValidValue = element => {
+            return (!['checkbox', 'radio'].includes(element.type) || element.checked);
+        };
+        
+        // Function to check if an input is a checkbox
+        const isCheckbox = element => element.type === 'checkbox';
+        
+        // Function to check if an input is a multiselect
+        const isMultiSelect = element => element.options && element.multiple;
+        
+        // Function to get selected values from a multiselect
+        const getSelectValues = options => [].reduce.call(options, (values, option) => {
+            return option.selected ? values.concat(option.value) : values;
+        }, []);
+        
+        // Function to convert form elements to JSON object
+        const formToJSON = elements => [].reduce.call(elements, (data, element) => {
+            if (isValidElement(element) && isValidValue(element)) {
+                if (isCheckbox(element)) {
+                    data[element.name] = (data[element.name] || []).concat(element.value);
+                } else if (isMultiSelect(element)) {
+                    data[element.name] = getSelectValues(element);
+                } else {
+                    data[element.name] = element.value;
+                }
+            }
+            return data;
+        }, {});
+        
+        // Function to handle form submission
+        const handleFormSubmit = event => {
+            event.preventDefault(); // Prevent default form submission
+            
+            // Convert form elements to JSON object
+            const data = formToJSON(form.elements);
+            
+            // Display form data
+            const dataContainer = document.getElementsByClassName('results__display')[0];
+            dataContainer.textContent = JSON.stringify(data, null, "  ");
+        };
+        
+        // Get the form element
+        const form = document.getElementsByClassName('contact-form')[0];
+        
+        // Attach event listener to form submission
+        form.addEventListener('submit', handleFormSubmit);
+    </script>
+</body>
+</html>
