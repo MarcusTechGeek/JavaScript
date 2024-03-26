@@ -1,6 +1,5 @@
-Sure, here's a README file for your project:
-
 SalonDB-Solutions
+
 SalonDB-Solutions is a web application that provides a simple login and registration system for a hair salon. It features a user-friendly interface and secure authentication using bcrypt for password hashing.
 
 Prerequisites
